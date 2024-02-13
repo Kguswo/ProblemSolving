@@ -25,16 +25,16 @@ public class Main {
 					if (stack.isEmpty() || stack.peek() != '[') {
 						able = false;
 						break;
-					} else if(!(stack.isEmpty()) && stack.peek() == '[')
-						stack.pop();
+					} 
+					else	stack.pop();
 				} 
 				
 				else if (str2.charAt(j) == ')') {
 					if (stack.isEmpty() || stack.peek() != '(') {
 						able = false;
 						break;
-					} else if(!(stack.isEmpty()) && stack.peek() == '(')
-						stack.pop();
+					} 
+					else	stack.pop();
 				}
 			}
 			if ( !stack.isEmpty() || !able) System.out.println("no");
