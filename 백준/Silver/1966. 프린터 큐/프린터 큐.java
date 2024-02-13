@@ -16,7 +16,7 @@ public class Main {
 			queue.clear();
 			N = sc.nextInt(); // 문서의 개수
 			M = sc.nextInt(); // 궁금한 문서 위치
-			count = 0; // 출력할 프린
+			count = 0;
 			int max = Integer.MIN_VALUE;
 
 			for (int j = 0; j < N; j++) {
@@ -25,14 +25,14 @@ public class Main {
 				if (max < num) max = num;
 			}
 			while (true) {
-				if (M == 0 && queue.peek() == max) {
+				if (M == 0 && queue.peek() == max) { // 찾고자 하는 원소가 front에 있으면서 최대값이면 제거하고 종료
 					queue.poll();
 					break;
 				}
-				if (queue.peek() == max) {
+				if (queue.peek() == max) { // 찾고자하는 원소는 아니지만 최대값이면 제거하고 개수추가, 찾는원소 인덱스 -1
 					queue.poll();
 					count++; M--;
-				} else if (queue.peek() != max) {
+				} else if (queue.peek() != max) { //  그 외 경우 front원소 제거 후 맨 뒤로 add, 찾는원소 인덱스 수정 
 					int k = queue.poll();
 					queue.add(k);
 					
@@ -40,13 +40,13 @@ public class Main {
 					else M--;
 				}
 
-				max = Integer.MIN_VALUE;
+				max = Integer.MIN_VALUE; // 다음 반복문 돌기 전에 최댓값 재갱신
 				for (int leftnum : queue) {
 					if (max < leftnum)
 						max = leftnum;
 				}
 			}
-			count++;
+			count++; // 찾는원소가 front에 있으면서 최댓값일때 종료했으므로 마지막으로 count +1
 			System.out.println(count);
 		}
 	}
