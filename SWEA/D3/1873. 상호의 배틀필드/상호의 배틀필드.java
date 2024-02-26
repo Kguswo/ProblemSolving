@@ -107,12 +107,12 @@ public class Solution {
 						// 대포가 간 칸에 벽돌벽이면 부수고 사라짐 -> 평지로만듬
 						if (0 <= si && si < H && 0 <= sj && sj < W && arr[si][sj] == '*') {
 							arr[si][sj] = '.';
-							break shoot;
+							break;
 
 						}
 						// 철벽 만나면 멈춤
 						else if (0 <= si && si < H && 0 <= sj && sj < W && arr[si][sj] == '#') {
-							break shoot;
+							break;
 						} else { // 평지나 바다 쭉 진행
 							si += dr[k];
 							sj += dc[k];
