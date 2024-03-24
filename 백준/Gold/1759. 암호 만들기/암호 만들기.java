@@ -1,58 +1,58 @@
-import java.util.*;
+import java.util.Arrays;
+import java.util.Scanner;
 
-public class Main {
-    static int L, C;
-    static char[] characters;
-    static boolean[] visited;
+class Main {
 
-    public static void main(String[] args) {
-        Scanner scanner = new Scanner(System.in);
-        L = scanner.nextInt();
-        C = scanner.nextInt();
-        characters = new char[C];
-        visited = new boolean[C];
+	public static int L, C;
+	public static char str[];
+	public static char ans[];
 
-        for (int i = 0; i < C; i++) {
-            characters[i] = scanner.next().charAt(0);
-        }
+	public static void main(String[] args) {
 
-        Arrays.sort(characters); // 입력된 문자들을 정렬
+		Scanner sc = new Scanner(System.in);
+		L = sc.nextInt();
 
-        generatePasswords(0, 0, 0, "");
+		C = sc.nextInt();
 
-        scanner.close();
-    }
+		str = new char[C];
+		ans = new char[L];
 
-    private static void generatePasswords(int index, int consonants, int vowels, String password) {
-        if (password.length() == L) {
-            if (consonants >= 2 && vowels >= 1) {
-                System.out.println(password);
-            }
-            return;
-        }
+		for (int i = 0; i < C; i++) {
+			str[i] = sc.next().charAt(0);
+		}
 
-        if (index == C) {
-            return;
-        }
+		Arrays.sort(str);
 
-        char currentCharacter = characters[index];
-        int newConsonants = consonants;
-        int newVowels = vowels;
+		find(0, 0);
 
-        if (isVowel(currentCharacter)) {
-            newVowels++;
-        } else {
-            newConsonants++;
-        }
+	}
 
-        // 현재 문자를 선택하는 경우
-        generatePasswords(index + 1, newConsonants, newVowels, password + currentCharacter);
-        
-        // 현재 문자를 선택하지 않는 경우
-        generatePasswords(index + 1, consonants, vowels, password);
-    }
+	public static void find(int start, int depth) {
+		if (depth == L) { // base
+			int coCount = 0;
+			int voCount = 0;
+			for (int i = 0; i < L; i++) {
+				if (ans[i] == 'a' || ans[i] == 'e' || ans[i] == 'i' || ans[i] == 'o' || ans[i] == 'u')
+					coCount++;
 
-    private static boolean isVowel(char c) {
-        return c == 'a' || c == 'e' || c == 'i' || c == 'o' || c == 'u';
-    }
+				else
+					voCount++;
+
+				if (coCount >= 1 && voCount >= 2)
+					break;
+			}
+
+			if (coCount >= 1 && voCount >= 2)
+
+				System.out.println(ans);
+
+			return;
+		}
+
+		for (int i = start; i < C; i++) {
+			ans[depth] = str[i];
+			find(i + 1, depth + 1);
+		}
+
+	}
 }
