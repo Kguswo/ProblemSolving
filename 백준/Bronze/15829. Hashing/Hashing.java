@@ -3,12 +3,14 @@ import java.util.Scanner;
 public class Main {
 	public static void main(String[] args) {
 		Scanner sc = new Scanner(System.in);
-		int N = sc.nextInt();
+		long N = sc.nextInt();
 		String str = sc.next();
-		int sum = 0;
+		long sum = 0;
+        long r = 1;
 		for(int i=0; i<N; i++) {
-			sum += (str.charAt(i)-'a'+1)*Math.pow(31, i);
+			sum += ((str.charAt(i)-'a'+1)*r)%1234567891;
+            r = (r*31)%1234567891;
 		}
-		System.out.println(sum);
+		System.out.println(sum%1234567891);
 	}
 }
