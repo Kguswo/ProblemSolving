@@ -25,7 +25,7 @@ public class Main {
 			long mid = (low+high)/2;
 			long Ncount = countsum(mid);
 			
-			if(K<=Ncount) high = mid;
+			if(K<=Ncount) high = mid; // 여기 등호 들어가야함!!! (이거땜에 틀렸습니다 뜸)
 			else low = mid +1;
 		}
 		return low;
