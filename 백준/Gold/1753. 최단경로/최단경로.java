@@ -39,16 +39,8 @@ public class Main {
 		for(int i=0; i<E; i++) {
 			adj[sc.nextInt()].add(new Node(sc.nextInt(), sc.nextInt()));
 		}
-		//테스트 출력
-//		for(int i=1; i<=V; i++) {
-//			for(Node n : adj[i]) {
-//				System.out.print(i+"->"+n.end + " 가중치=" + n.W + ", ");
-//			}
-//			System.out.println();
-//		}
 		
 		dijkstra(K);
-//		System.out.println(Arrays.toString(minlen));
 		for(int i=1; i<minlen.length; i++) {
 			if(i!=K && minlen[i] == Integer.MAX_VALUE) System.out.println("INF");
 			else System.out.println(minlen[i]);
