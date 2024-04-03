@@ -1,69 +1,88 @@
 import java.io.File;
 import java.io.FileNotFoundException;
+import java.util.ArrayList;
 import java.util.Arrays;
+import java.util.List;
 import java.util.Scanner;
 
 public class Main {
-	static int inning, order[], board[][], max, base[];
-	static boolean[] visited = new boolean[9];
+	
+	static int inning, order[], makeorder[], max;
+	static int[][] board;
+	static boolean[] visited;
 	public static void main(String[] args) throws FileNotFoundException {
 		Scanner sc = new Scanner(System.in);
 //		Scanner sc = new Scanner(new File("input.txt"));
-		
 		inning = sc.nextInt();
+		visited = new boolean[9];
+		order = new int[9]; // XXX0XXXXX넣을곳
 		board = new int[inning][9];
 		for(int i=0; i<inning; i++) {
 			for(int j=0; j<9; j++) {
 				board[i][j] = sc.nextInt();
 			}
 		}
-		order = new int [9]; order[3] = 0; visited[3] = true; // 1번타자 4고정
+		order[3] = 0; visited[3] = true; // 4번째 타자 고정
 		permutation(1);
 		System.out.println(max);
 	}
-	static int idx = 1;
+	static int idx=1;
 	private static void permutation(int cnt) {
 		if(cnt == 9) {
-//			System.out.println(Arrays.toString(order) + " " + idx++);
-			max = Math.max(calmaxscore(), max);
+//			System.out.println(Arrays.toString(order) + " " + (idx++) + "번째");
+//			swap();
+//			calmaxscore(order, 0, 0, 0, 0);
+			max = Math.max(max, calmaxscore());
+//			System.out.println(max);
 			return;
-		}
-		for(int i=0; i<9; i++) {
+		}		
+		for(int i=0; i<=8; i++) {
 			if(!visited[i]) {
 				visited[i] = true;
 				order[i] = cnt;
-//				System.out.println("넣은 값 : " +cnt);
-				permutation(cnt+1);
+				permutation(cnt +1);
 				visited[i] = false;
 			}
 		}
 	}
+	private static void swap() {
+		int tmp = order[3];
+	    order[3] = order[0];
+		order[0] = tmp;
+	}
 	private static int calmaxscore() {
-		int sum = 0; int index = 0;
+		int sum = 0, index = 0;
 		for(int i=0; i<inning; i++) {
-			base = new int [5];
-			while(base[0] < 3) {
-				baseball(base, board[i][order[index]]);
-				if(index==8) {
-					index=0;
-				}else {
-					index++;
+			int outcount = 0;
+			int [] base = new int [3];
+			
+			while(outcount <3) {
+				if(board[i][order[index]]==0) outcount++;
+				else { // 치긴 쳤으면
+					//먼저 1,2,3루 애들 이동
+					for (int j = 2; j >= 0; j--) {
+	                    if (base[j] > 0) {
+	                        if (j + board[i][order[index]] >= 3) { // 점수 낼떄
+	                            sum++;
+	                            base[j] = 0;
+	                        } else { // 나머지 경우는 이동
+	                            base[j + board[i][order[index]]] = 1;
+	                            base[j] = 0;
+	                        }
+	                    }
+	                }
+					// 타자이동
+					// 0과 4 아니면 일단 쳤으므로 친 만큼 이동
+					if(board[i][order[index]] != 4) base[board[i][order[index]]-1] = 1;
+					else {
+						sum += 1 + base[0] + base[1] + base[2];
+			            Arrays.fill(base, 0); // 홈런이므로 다시 베이스 비우기
+					}
 				}
-//				index = (index+1)%9;
+				index = (index + 1) % 9;
 //				System.out.println("인덱스 : " + index);
 			}
-//			System.out.println(Arrays.toString(base));
-			sum += base[4];
 		}
 		return sum;
-	}
-	private static void baseball(int[] location, int score) {
-		for(int i=0; i<score; i++) { // 0, 1, 2, 3만큼 이동
-			location[4]+=location[3]; // 여기 점수 낸 사람 수만큼 쌓임 (이닝당 버는 점수)
-			location[3]=location[2];
-			location[2]=location[1];
-			location[1]=0;		
-		}
-		location[score] += 1;
 	}
 }
