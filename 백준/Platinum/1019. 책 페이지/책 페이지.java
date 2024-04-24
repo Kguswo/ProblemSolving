@@ -10,7 +10,7 @@ public class Main {
 		arr = new long[10];
 		String str = String.valueOf(N);
 		int digit = str.length(); // N의 자릿수
-		k = new long[20];
+		k = new long[10];
 		for(int i=0; i<k.length; i++) {
 			k[i] = (int) Math.pow(10, i);
 		}
@@ -28,8 +28,9 @@ public class Main {
 
 	private static int find(long k, long targetnum) {
 		int count = 0;
+		
 		long a = (N /(int) Math.pow(10, k+1));
-		if(targetnum == 0 && a == 0) {
+		if(targetnum == 0 && a == 0) { // 자릿수 더 큰데 0 찾으면 000쌓인거 찾는거니까 없애야함
 			return 0;
 		}
 		count += a*Math.pow(10, k);
