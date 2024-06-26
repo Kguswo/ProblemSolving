@@ -15,21 +15,28 @@ class Solution {
             if((100-progresses[i]) % speeds[i] == 0) arr[i] = Math.max(value, arr[i-1]);
             else arr[i] = Math.max(value+1, arr[i-1]);
         }
-        Set<Integer> sizecheck = new HashSet<>();
-        for (int a : arr) sizecheck.add(a);
-        int size = sizecheck.size();
-        
-        int[] answer = new int[size];
-        int idx = 0;
-        int cnt = 1;
-        for (int i = 1; i < length; i++) {
-            if (arr[i] == arr[i - 1]) cnt++;
-            else {
-                answer[idx++] = cnt;
-                cnt = 1;
-            }
+        int[] count = new int[101];
+        for(int a : arr){
+            count[a]++;
         }
-        answer[size-1] = cnt;
-        return answer;
+        return Arrays.stream(count).filter(i -> i!=0).toArray();
+
+        
+//         Set<Integer> sizecheck = new HashSet<>();
+//         for (int a : arr) sizecheck.add(a);
+//         int size = sizecheck.size();
+        
+//         int[] answer = new int[size];
+//         int idx = 0;
+//         int cnt = 1;
+//         for (int i = 1; i < length; i++) {
+//             if (arr[i] == arr[i - 1]) cnt++;
+//             else {
+//                 answer[idx++] = cnt;
+//                 cnt = 1;
+//             }
+//         }
+//         answer[size-1] = cnt;
+//         return answer;
     }
 }
