@@ -25,8 +25,9 @@ public class Main {
         // A제거
         if (T.charAt(end) == 'A') TtoS(S, T.substring(0, end), end - 1);
         
-        // 뒤집고 B제거
-        if (new StringBuilder(T).reverse().toString().charAt(end) == 'B') TtoS(S, new StringBuilder(T).reverse().substring(0, end), end - 1);
+        // 뒤집고 B제거 -> 뒤집기를 StringBuffer 및 StringBuilder로 바꿔보기
+        if (new StringBuffer(T).reverse().toString().charAt(end) == 'B') TtoS(S, new StringBuffer(T).reverse().substring(0, end), end - 1);
+//        if (new StringBuilder(T).reverse().toString().charAt(end) == 'B') TtoS(S, new StringBuilder(T).reverse().substring(0, end), end - 1);
     }
     
 //    private static String reverse(String T) {
