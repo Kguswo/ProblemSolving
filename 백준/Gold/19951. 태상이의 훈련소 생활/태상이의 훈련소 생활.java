@@ -40,7 +40,9 @@ public class Main {
 			height[i] += sum[i];
 			sb.append(height[i] + " ");
 		}
-
-		System.out.println(sb.toString());
-	}
+		bw.write(sb.toString());
+		bw.flush();
+		bw.close();
+		br.close();	
+    }
 }
