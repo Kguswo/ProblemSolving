@@ -7,7 +7,7 @@ public class Main {
     static StringTokenizer st;
     static int[] parents = new int[320000];
     static int R, C, extended_R, extended_C, ans;
-    static char[][] c = new char[200][201];
+    static char[][] c = new char[200][200];
     public static void main(String[] args) throws IOException {
       br = new BufferedReader(new InputStreamReader(System.in));
  //       br = new BufferedReader(new InputStreamReader(new FileInputStream("input.txt")));
@@ -45,10 +45,7 @@ public class Main {
     }
 
     public static int find(int x) {
-        if (parents[x] < 0) return x;
-        return parents[x] = find(parents[x]);
-
-//        return parents[x] < 0 ? x : (parents[x] = find(parents[x]));
+        return parents[x] < 0 ? x : (parents[x] = find(parents[x]));
     }
 
     public static boolean isDivided(int x, int y) {
