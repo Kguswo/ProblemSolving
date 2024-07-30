@@ -25,7 +25,7 @@ public class Main {
 		for (int i = 1; i <= N; i++) {
 			num[i] = Integer.parseInt(br.readLine());
 		}
-//		System.out.println(Arrays.toString(num));
+//  		System.out.println(Arrays.toString(num));
 
 		init(1, N, 1);
 
@@ -34,9 +34,12 @@ public class Main {
 			int from = Integer.parseInt(st.nextToken());
 			int to = Integer.parseInt(st.nextToken());
 
-			System.out.println(getMin(1, N, 1, from, to));
+			bw.write(getMin(1, N, 1, from, to) + "\n");
 		}
-
+		
+    bw.flush();
+    bw.close();
+    br.close();
 	}
 
 	/*
