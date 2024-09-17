@@ -1,3 +1,6 @@
+/**
+ * Author : nowalex322, Kim HyeonJae
+ */
 import java.io.*;
 import java.util.*;
 
