@@ -17,7 +17,7 @@ public class Main {
 
 	public void solution() throws Exception {
 		br = new BufferedReader(new InputStreamReader(System.in));
-//		br = new BufferedReader(new InputStreamReader(new FileInputStream("input.txt")));
+		//br = new BufferedReader(new InputStreamReader(new FileInputStream("input.txt")));
 		bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
 		int N = Integer.parseInt(br.readLine());
