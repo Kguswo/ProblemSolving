@@ -14,6 +14,7 @@ public class Main {
     static BufferedReader br;
     static BufferedWriter bw;
     static StringTokenizer st;
+    static StringBuilder sb = new StringBuilder();
     static int T, N, arr[][];
 
     public static void main(String[] args) throws Exception {
@@ -48,8 +49,9 @@ public class Main {
                 }
             }
 
-            bw.write(String.valueOf(cnt) + "\n");
+            sb.append(String.valueOf(cnt) + "\n");
         }
+        bw.write(sb.toString());
         bw.close();
         br.close();
     }
