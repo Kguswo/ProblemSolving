@@ -26,9 +26,7 @@ public class Main {
 			arr[i] = Integer.parseInt(br.readLine());
 		}
 		
-		arr = Arrays.stream(arr)
-					.sorted()
-					.toArray();
+		Arrays.sort(arr);
 		
 		int minLen = 1;
 		int maxLen = (arr[N-1] - arr[0]) / (C-1);
