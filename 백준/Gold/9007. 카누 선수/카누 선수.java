@@ -51,31 +51,31 @@ public class Main {
 //					.toArray();
 			Arrays.sort(C1plusC2);
 			Arrays.sort(C3plusC4);
-	       
-			int minDiff = Math.abs(k - (C1plusC2[0] + C3plusC4[0]));
-			int res = C1plusC2[0] + C3plusC4[0];
-   
-	        for(int i=0; i<C1plusC2.length; i++) {
-	        	int target = k-C1plusC2[i];
-	            int left = 0, right = C3plusC4.length-1;
-	           
-	            while(left <= right) {
-	                int mid = left + (right - left)/2;
-	                int sum = C1plusC2[i] + C3plusC4[mid];
-	                int diff = k - sum;
-	               
-	                if(Math.abs(diff) < minDiff || (Math.abs(diff) == minDiff && sum < res)) {
-	                    minDiff = Math.abs(diff);
-	                    res = sum;
-	                }
-	               
-	                if(diff == 0) break;
-	                if(diff > 0) left = mid+1;
-	                else right = mid-1;
-	            }
-	       }
-	       
-	       bw.write(String.valueOf(res)+"\n");
+			
+			
+			int res =  C1plusC2[0] + C3plusC4[0];
+		
+			for(int i=0; i<C1plusC2.length; i++) {
+				int target = k-C1plusC2[i];
+				int left = 0; int right = C3plusC4.length-1;
+				
+				while(left <= right) {
+					int mid = left + (right - left)/2;
+					int sum = C1plusC2[i] + C3plusC4[mid];
+					
+					if(Math.abs(k-sum) < Math.abs(k-res) || 
+							(Math.abs(k-sum) == Math.abs(k-res) && sum < res )) res=sum;
+					
+					if(sum==k)  break;
+					
+					if(C3plusC4[mid] < target) left = mid+1;
+					else right = mid-1;
+					
+				}
+			}
+			
+			
+			bw.write(String.valueOf(res)+"\n");
 		}
 
 		bw.flush();
