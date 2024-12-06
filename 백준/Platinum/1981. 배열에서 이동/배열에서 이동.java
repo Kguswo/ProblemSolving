@@ -35,7 +35,7 @@ public class Main {
 		}
 		
 		int res = 210;
-		int left = 0;
+		int left = Math.abs(board[1][1]-board[N][N]);
 		int right = max-min;
 		while(left<=right) {
 			int mid = left + (right-left)/2;
