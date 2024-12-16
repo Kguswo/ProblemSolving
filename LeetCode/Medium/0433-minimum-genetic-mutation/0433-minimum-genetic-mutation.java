@@ -10,7 +10,7 @@ class Solution {
         if(!geneBank.contains(end)) return -1;
         
         Queue<Integer> queue = new LinkedList<>();
-        List<Integer> visited = new LinkedList<>();
+        Set<Integer> visited = new HashSet<>();
 
         queue.offer(start);
         visited.add(start);
