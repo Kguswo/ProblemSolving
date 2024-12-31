@@ -8,7 +8,8 @@ public class Main {
 	static BufferedReader br;
 	static BufferedWriter bw;
 	static StringTokenizer st;
-
+    static int N, W, tree[];
+    double leaf, res;
 	public static void main(String[] args) throws Exception {
 		new Main().solution();
 	}
@@ -18,11 +19,10 @@ public class Main {
 //		br = new BufferedReader(new InputStreamReader(new FileInputStream("input.txt")));
 		bw = new BufferedWriter(new OutputStreamWriter(System.out));
 		st = new StringTokenizer(br.readLine());
-
-		int N = Integer.parseInt(st.nextToken());
-		int W = Integer.parseInt(st.nextToken());
-		int[] tree = new int[500010];
-		double leaf = 0;
+		N = Integer.parseInt(st.nextToken());
+		W = Integer.parseInt(st.nextToken());
+		tree = new int[500010];
+		leaf = 0;
 		
 		for(int i=0; i<N-1; i++) {
 			st = new StringTokenizer(br.readLine());
@@ -36,7 +36,7 @@ public class Main {
 			if(tree[i] == 1) leaf++;
 		}
 		
-		double res = W / leaf;
+		res = W / leaf;
 		bw.write(String.valueOf(res));
 		bw.flush();
 		bw.close();
