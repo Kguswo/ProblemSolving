@@ -33,6 +33,14 @@ public class Main {
 		robot1 = Integer.parseInt(st.nextToken());
 		robot2 = Integer.parseInt(st.nextToken());
 
+		if(N == 1 || robot1 == robot2) {
+	        bw.write("0");
+	        bw.flush();
+	        bw.close();
+	        br.close();
+	        return;
+	    }
+		
 		map = new ArrayList[N+1];
 		for(int i=1; i<=N; i++) {
 			map[i] = new ArrayList<Node>();
@@ -52,16 +60,15 @@ public class Main {
 		totalD = 0;
 		maxW = 0;
 		
-		dfs(robot1, robot2, 0);
+		dfs(robot1, robot2);
 		bw.write(String.valueOf(totalD - maxW));
 		bw.flush();
 		bw.close();
 		br.close();
 	}
 
-	private boolean dfs(int start, int end, int sum) {
-		if(start == robot2) {
-			totalD = sum;
+	private boolean dfs(int start, int end) {
+		if(start == end) {
 			return true;
 		}
 		
@@ -69,10 +76,21 @@ public class Main {
 		
 		for(Node n : map[start]) {
 			if(!visited[n.to]) {
+				int prevMax = maxW;
 				maxW = Math.max(maxW, n.W);
-				if(dfs(n.to, end, sum + n.W)) return true;
+				totalD += n.W;
+				
+				if(dfs(n.to, end)) return true;
+				
+				// 백트래킹
+				totalD -= n.W;
+				maxW = prevMax;				
 			}
 		}
+		
+	    // 경로를 못 찾았을 때 백트래킹 및 초기화
+		visited[start] = false;
+		maxW = 0;
 		return false;
 	}
 }
