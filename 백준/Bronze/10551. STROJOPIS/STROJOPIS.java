@@ -28,10 +28,10 @@ public class Main {
 			else if(str.charAt(i)=='9'||str.charAt(i)=='O'||str.charAt(i)=='L'||str.charAt(i)=='.') arr[6]++;
 			else arr[7]++;
 		}
-		for(int i : arr) {
-			System.out.println(i);
-		}
-		
+		for(int i=0;i<8;i++){
+            bw.write(String.valueOf(arr[i]));
+            bw.newLine();
+        }
 		bw.flush();
 		bw.close();
 		br.close();
