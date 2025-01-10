@@ -31,7 +31,7 @@ public class Main {
             dp[1][0][1] = 1;
 
             for (int i = 2; i <= N; i++) {
-                for (int j = 0; j <= K; j++) {
+                for (int j = 0; j <= Math.min(i - 1, K); j++) {
                     for (int k = 0; k < 2; k++) {
                         dp[i][j][0] = dp[i - 1][j][0] + dp[i - 1][j][1];
 
