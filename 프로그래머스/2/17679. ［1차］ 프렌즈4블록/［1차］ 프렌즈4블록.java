@@ -69,7 +69,7 @@ class Solution {
     
     private void goDown(){
         for(int j=0; j<M; j++) {
-            for(int i=N-2; i>=0; i--) {
+            for(int i=0; i<N-1; i++) {
                 for(int k=i; k<N-1; k++) {
                     if(map[k][j] != 'X' && map[k+1][j] == 'X') {
                         swap(k, j);
