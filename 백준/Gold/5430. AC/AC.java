@@ -61,6 +61,9 @@ public class Main {
 			}
 			if(isError) sb.append("error").append("\n");
 			else {
+			/*
+			출력을 간단하게 toArray로 하면 원소마다 , 뒤
+			*/
 //				if(isReversed) {
 //					List<Integer> tmp = new ArrayList<Integer>();
 //					while(!dq.isEmpty()) tmp.add(dq.pollLast());
