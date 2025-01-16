@@ -77,6 +77,7 @@ public class Main {
         }
 
         Pair result = query(1, uniqueSize, 1, uniqueSize, 1);
+        
         bw.write(result.length + " " + result.count + "\n");
         bw.flush();
         bw.close();
@@ -85,16 +86,15 @@ public class Main {
 
     private int binarySearch(ArrayList<Integer> unique, int target) {
         int left = 0, right = unique.size() - 1;
-        int res = right + 1;
+        int res = 0;
 
         while(left <= right){
             int mid = left + (right-left)/2;
             if(unique.get(mid) >= target) {
                 res = mid;
                 right = mid - 1;
-            } else {
-                left = mid + 1;
-            }
+            } 
+            else left = mid + 1;
         }
         return res;
     }
@@ -110,6 +110,7 @@ public class Main {
         int mid = start + (end-start)/2;
         Pair leftRes = query(left, right, start, mid, node*2);
         Pair rightRes = query(left, right, mid+1, end, node*2 + 1);
+        
         return merge(leftRes, rightRes);
     }
 
