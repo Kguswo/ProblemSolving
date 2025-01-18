@@ -258,18 +258,32 @@
 </tbody>
       </table>
 <p>SQL을 실행하면 다음과 같이 출력되어야 합니다.</p>
-<table class="table">
-        <thead><tr>
-<th>DEPT_ID</th>
-<th>DEPT_NAME_EN</th>
-<th>AVG_SAL</th>
-</tr>
-</thead>
-        <tbody></tbody>
-      </table>
-<p>| D0007 | Marketing | 54666667 |<br>
-| D0006 | Purchasing | 54250000 |<br>
-| D0005 | Finance | 52000000 |</p>
+<table>
+    <thead>
+        <tr>
+            <th>DEPT_ID</th>
+            <th>DEPT_NAME_EN</th>
+            <th>AVG_SAL</th>
+        </tr>
+    </thead>
+    <tbody>
+        <tr>
+            <td>D0007</td>
+            <td>Marketing</td>
+            <td>54666667</td>
+        </tr>
+        <tr>
+            <td>D0006</td>
+            <td>Purchasing</td>
+            <td>54250000</td>
+        </tr>
+        <tr>
+            <td>D0005</td>
+            <td>Finance</td>
+            <td>52000000</td>
+        </tr>
+    </tbody>
+</table>
 
 
 > 출처: 프로그래머스 코딩 테스트 연습, https://school.programmers.co.kr/learn/challenges
