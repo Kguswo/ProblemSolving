@@ -4,15 +4,15 @@ class Solution {
         
         n -= cores.length;
         
-        int left = 1, right =  100000000;
+        int left = 1, right =  250000000;
         
         int res = 0;
         while(left <= right){
             int mid = left + (right - left)/2;
             
-            int cnt = 0;
+            long cnt = 0;
             for(int i=0; i<cores.length; i++){
-                cnt += mid / cores[i];
+                cnt += (long) mid / cores[i];
             }
             
             if(cnt >= n){
@@ -26,9 +26,9 @@ class Solution {
         
         // 일단 res시간까진 작업이 완료된다는걸 찾음
         
-        int work = 0;
+        long work = 0;
         for(int i=0; i<cores.length; i++){
-            work += (res-1) / cores[i];
+            work += (long) (res-1) / cores[i];
         }
         
         int ans = cores.length;
