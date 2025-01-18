@@ -4,7 +4,7 @@ class Solution {
         
         n -= cores.length;
         
-        int left = 1, right = 30000;
+        int left = 1, right =  100000000;
         
         int res = 0;
         while(left <= right){
