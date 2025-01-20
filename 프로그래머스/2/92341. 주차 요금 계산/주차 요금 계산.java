@@ -7,7 +7,7 @@ import java.util.*;
 class Solution {
     static int cTime, cNumber;
     static String cActivity;
-    static Map<Integer, Integer> timeSumMap = new HashMap<>();
+    static Map<Integer, Integer> timeSumMap = new TreeMap<>();
     static Map<Integer, ArrayList<Integer>> timeTableMap = new HashMap<>();
     static List<Integer> carNums;
     static int[] res;
@@ -44,15 +44,14 @@ class Solution {
             }
         }
         
-        carNums = new ArrayList<Integer>(timeSumMap.keySet());
-        Collections.sort(carNums);
-        res = new int[carNums.size()];
-        for(int i=0; i<carNums.size(); i++){
+        res = new int[timeSumMap.size()];
+        int idx = 0;
+        for(int num : timeSumMap.keySet()){
             int money = fees[1];
-            if(timeSumMap.get(carNums.get(i)) > fees[0]){
-                money += (int) Math.ceil((double) (timeSumMap.get(carNums.get(i))-fees[0]) / fees[2]) * fees[3];
+            if(timeSumMap.get(num) > fees[0]){
+                money += (int) Math.ceil((double) (timeSumMap.get(num)-fees[0]) / fees[2]) * fees[3];
             }
-            res[i] = money;
+            res[idx++] = money;
         }
         return res;
     }
