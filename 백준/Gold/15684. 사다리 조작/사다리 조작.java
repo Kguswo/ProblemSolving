@@ -68,7 +68,10 @@ public class Main {
             return;
         }
 
-        dfs(0, 1);
+        for(int i=0; i<=3; i++) {
+            dfs(0, 1, i);  // i는 목표 가로선 개수
+            if(res != -1) break;  // 답을 찾으면 즉시 종료
+        }
 
         bw.write(String.valueOf(res));
         bw.flush();
@@ -106,11 +109,14 @@ public class Main {
         return true;
     }
 
-    private void dfs(int cnt, int depth){
-        if(cnt > 3) return;
+    private void dfs(int cnt, int depth, int line){ // line개만큼 둬야하는데 dfs돌리기
+        if(cnt > line) return;
 
-        if(check()){
-            if(res == -1 || cnt < res) res = cnt;
+        if(cnt == line){
+            if(check()){
+                res = cnt;
+                return;
+            }
             return;
         }
 
@@ -123,7 +129,8 @@ public class Main {
                     ladder[i][j] = 1;
                     ladder[i][j+1] = -1;
 
-                    dfs(cnt+1, i);
+                    dfs(cnt+1, i, line);
+                    if(res != -1) return;
 
                     ladder[i][j] = 0;
                     ladder[i][j+1] = 0;
