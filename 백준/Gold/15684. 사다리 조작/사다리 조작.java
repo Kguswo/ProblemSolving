@@ -52,6 +52,14 @@ public class Main {
             ladder[a][b+1] = -1; // 왼쪽으로 연결
         }
 
+        if(needMoreThan4()){
+            bw.write(String.valueOf(-1));
+            bw.flush();
+            bw.close();
+            br.close();
+            return;
+        }
+
         if(check()) {
             bw.write(String.valueOf(0));
             bw.flush();
@@ -66,6 +74,19 @@ public class Main {
         bw.flush();
         bw.close();
         br.close();
+    }
+
+    private boolean needMoreThan4(){
+        int sum = 0;
+        for(int i=1; i<N; i++){
+            int cnt = 0;
+            for(int j=1; j<=H; j++){
+                if(ladder[j][i] == 1) cnt++;
+            }
+            // 한 사다리에서 우측으로 짝수개가 붙어있어야함.
+            if(cnt %2 != 0) sum++;
+        }
+        return sum >= 4;
     }
 
     private int goDown(int start) {
