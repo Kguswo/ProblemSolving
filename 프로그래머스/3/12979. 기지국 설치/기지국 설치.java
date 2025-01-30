@@ -1,30 +1,30 @@
 class Solution {
-    static int left, right, width;
+    static int left, right, width, len, res;
     public int solution(int n, int[] stations, int w) {
-        int res = 0;
+        res = 0;
         width = 2*w+1;
             
-        left = 1;
-        right = stations[0] - w - 1;
-        res += getCnt();
+        left = 1; right = stations[0] - w - 1;
+        add5G();
         
         for(int i=1; i<stations.length; i++){
-            left = stations[i-1]+w+1;
-            right = stations[i]-w-1;
-            res += getCnt();
+            left = stations[i-1]+w+1; right = stations[i]-w-1;
+            add5G();
         }
         
-        left = stations[stations.length-1]+w+1;
-        right = n;
-        res += getCnt();
+        left = stations[stations.length-1]+w+1; right = n;
+        add5G();
         
         return res;
     }
     
-    private int getCnt(){
+    private void add5G(){      
         if(left<=right) {
-            return ((right-left+1) % width) == 0 ? ((right-left+1) / width) : ((right-left+1) / width) + 1;
+            len = right-left+1;
+            res += len / width;
+            res += (len % width) == 0 ? 0 : 1;
+            return;
         }
-        else return 0;
+        return;
     }
 }
