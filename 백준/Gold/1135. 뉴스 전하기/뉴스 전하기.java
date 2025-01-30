@@ -9,7 +9,8 @@ public class Main {
     static BufferedReader br;
     static BufferedWriter bw;
     static StringTokenizer st;
-    static int N, parent[], maxP, time[];
+    static int N, parent[], maxT, time[];
+    static ArrayList<Integer> childList;
     public static void main(String[] args) throws Exception {
         new Main().solution();
     }
@@ -27,7 +28,6 @@ public class Main {
         for (int i = 0; i < N; i++) {
             int num = Integer.parseInt(st.nextToken());
             parent[i] = num;
-            maxP = num;
         }
 
         // 자식부터 시간 업데이트
@@ -42,14 +42,14 @@ public class Main {
     }
 
     private void updateTime(int num) {
-        ArrayList<Integer> childList = new ArrayList<>();
+        childList = new ArrayList<>();
         for(int i=0; i<N; i++){
             if(parent[i] == num) childList.add(time[i]);
         }
 
         Collections.sort(childList, Collections.reverseOrder());
 
-        int maxT = 0;
+        maxT = 0;
         for(int order = 1; order<=childList.size(); order++){
             maxT = Math.max(maxT, order + childList.get(order-1));
         }
