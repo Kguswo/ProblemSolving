@@ -18,7 +18,7 @@ public class Main {
         br = new BufferedReader(new InputStreamReader(System.in));
 //        br = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/BOJ_2295_세수의합/input.txt")));
         bw = new BufferedWriter(new OutputStreamWriter(System.out));
-        
+
         N = Integer.parseInt(br.readLine());
         arr = new int[N];
         for(int i = 0; i < N; i++){
@@ -26,25 +26,31 @@ public class Main {
         }
         Arrays.sort(arr);
 
-        HashSet<Integer> set = new HashSet<>();
+        int left, right, res=0;
+        for(int i = N-1; i >= 0; i--){
+            for(int j=i-1; j>=0; j--){
+                for(int k=0; k<=j; k++){
+                    if(arr[i]-(arr[j]+arr[k]) <= 0) break;
+                    left = 0;
+                    right = k;
+                    while(left <= right){
+                        int mid = left + (right - left)/2;
+                        if(arr[mid] >= arr[i]-(arr[j]+arr[k])){
+                            right = mid - 1;
+                            res = mid;
+                        }
+                        else{
+                            left = mid + 1;
+                        }
+                    }
 
-        for(int i = 0; i < N; i++){
-            for(int j=0 ; j < N; j++){
-                set.add(arr[i] + arr[j]);
-            }
-        }
-
-//        System.out.println(set);
-
-        int res = 0;
-        for(int k=N-1; k>=0; k--){
-            for(int i=0; i<N; i++){
-                if(set.contains(arr[k]-arr[i])){
-                    res = Math.max(res, arr[k]);
+                    if(arr[res] == arr[i]-(arr[j]+arr[k])){
+                        System.out.println(arr[i]);
+                        return;
+                    }
                 }
             }
         }
-        bw.write(String.valueOf(res));
         bw.flush();
         bw.close();
         br.close();
