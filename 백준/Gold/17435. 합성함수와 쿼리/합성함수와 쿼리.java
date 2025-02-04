@@ -8,36 +8,33 @@ import java.util.*;
 public class Main {
     static BufferedReader br;
     static BufferedWriter bw;
-    static StringTokenizer st;
     static StringBuilder sb = new StringBuilder();
+    static int m, q, n, x;
     public static void main(String[] args) throws Exception {
         new Main().solution();
     }
 
     public void solution() throws Exception {
-        br = new BufferedReader(new InputStreamReader(System.in));
-//        br = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/BOJ_17435_합성함수와쿼리/input.txt")));
         bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        m = read();
+        int[][] dp = new int[19][m+1];
 
-        int m = Integer.parseInt(br.readLine());
-        int[][] dp = new int[19][m+1]; // 2^18 > 500000 이므로 19도 충분함
-
-        st = new StringTokenizer(br.readLine());
+        // f(x) 입력 받기
         for(int i = 1; i <= m; i++) {
-            dp[0][i] = Integer.parseInt(st.nextToken());
+            dp[0][i] = read();
         }
 
+        // 희소 배열 계산
         for(int i=1; i<19; i++) {
             for(int j=1; j<=m; j++){
                 dp[i][j] = dp[i-1][dp[i-1][j]];
             }
         }
 
-        int q = Integer.parseInt(br.readLine());
+        q = read();
         while(q--> 0) {
-            st = new StringTokenizer(br.readLine());
-            int n = Integer.parseInt(st.nextToken());
-            int x = Integer.parseInt(st.nextToken());
+            n = read();
+            x = read();
 
             for(int i=0; i<19; i++){
                 if((n & (1<<i)) != 0) x = dp[i][x];
@@ -47,6 +44,18 @@ public class Main {
         bw.write(sb.toString());
         bw.flush();
         bw.close();
-        br.close();
+    }
+    public static int read() throws IOException {
+        int n = 0;
+        boolean isNegative = false;
+        int c;
+        while ((c = System.in.read()) <= 32) ;
+        if (c == '-') {
+            isNegative = true;
+            c = System.in.read();
+        }
+        do n = (n << 3) + (n << 1) + (c & 15);
+        while ((c = System.in.read()) > 32);
+        return isNegative ? -n : n;
     }
 }
