@@ -6,8 +6,6 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static BufferedReader br;
-    static BufferedWriter bw;
     static StringBuilder sb = new StringBuilder();
     static int m, q, n, x;
     public static void main(String[] args) throws Exception {
@@ -15,7 +13,6 @@ public class Main {
     }
 
     public void solution() throws Exception {
-        bw = new BufferedWriter(new OutputStreamWriter(System.out));
         m = read();
         int[][] dp = new int[19][m+1];
 
@@ -41,9 +38,7 @@ public class Main {
             }
             sb.append(x).append("\n");
         }
-        bw.write(sb.toString());
-        bw.flush();
-        bw.close();
+        System.out.println(sb);
     }
     public static int read() throws IOException {
         int n = 0;
