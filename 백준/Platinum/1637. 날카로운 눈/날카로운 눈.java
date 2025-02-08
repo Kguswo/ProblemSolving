@@ -6,9 +6,65 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static BufferedReader br;
-    static BufferedWriter bw;
-    static StringTokenizer st;
+
+    static class FastReader {
+        private final DataInputStream din;
+        private final byte[] buffer;
+        private int bufferPointer, bytesRead;
+
+        public FastReader() {
+            din = new DataInputStream(System.in);
+            buffer = new byte[16384];
+            bufferPointer = bytesRead = 0;
+        }
+
+        private byte read() throws IOException {
+            if (bufferPointer == bytesRead)
+                fillBuffer();
+            return buffer[bufferPointer++];
+        }
+
+        private void fillBuffer() throws IOException {
+            bytesRead = din.read(buffer, bufferPointer = 0, buffer.length);
+            if (bytesRead == -1)
+                buffer[0] = -1;
+        }
+
+        public int nextInt() throws IOException {
+            int ret = 0;
+            byte c = read();
+            while (c <= ' ')
+                c = read();
+            boolean neg = (c == '-');
+            if (neg)
+                c = read();
+            do {
+                ret = ret * 10 + c - '0';
+            } while ((c = read()) >= '0' && c <= '9');
+            return neg ? -ret : ret;
+        }
+    }
+
+    static class FastWriter {
+        private final BufferedOutputStream bos;
+
+        public FastWriter() {
+            this.bos = new BufferedOutputStream(System.out);
+        }
+
+        public void print(Object object) throws IOException {
+            bos.write(object.toString().getBytes());
+        }
+
+        public void println(Object object) throws IOException {
+            print(object);
+            bos.write('\n');
+        }
+
+        public void flush() throws IOException {
+            bos.flush();
+        }
+    }
     static StringBuilder sb = new StringBuilder();
     static int N;
     static long res;
@@ -19,17 +75,15 @@ public class Main {
     }
 
     public void solution() throws Exception {
-        br = new BufferedReader(new InputStreamReader(System.in));
-//        br = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/BOJ_1637_날카로운눈/input.txt")));
-        bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        FastReader fr = new FastReader();
+        FastWriter fw = new FastWriter();
         
-        N = Integer.parseInt(br.readLine());
+        N = fr.nextInt();
         board = new int[N][3];
         for(int i=0; i<N; i++) {
-            st = new StringTokenizer(br.readLine());
-            board[i][0] = Integer.parseInt(st.nextToken());
-            board[i][1] = Integer.parseInt(st.nextToken());
-            board[i][2] = Integer.parseInt(st.nextToken());
+            board[i][0] = fr.nextInt();
+            board[i][1] = fr.nextInt();
+            board[i][2] = fr.nextInt();
         }
         
         long left = 1;
@@ -47,16 +101,14 @@ public class Main {
             }
         }
 
-        if(!flag)  sb.append("NOTHING");
+        if(!flag) fw.println("NOTHING");
         else {
             long ans = getCnt(res) - getCnt(res-1);
-            sb.append(res).append(" ").append(ans);
+            fw.print(res);
+            fw.print(" ");
+            fw.println(ans);
         }
-
-        bw.write(sb.toString());
-        bw.flush();
-        bw.close();
-        br.close();
+        fw.flush();
     }
 
     private long getCnt(long mid) { // mid보다 작거나 같은 수들의 총 개수
