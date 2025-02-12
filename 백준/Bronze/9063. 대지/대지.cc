@@ -19,23 +19,33 @@ void solve() {
     int n;
     cin >> n;
 
-    vector<int> x(n), y(n);
-    for (int i = 0; i < n; i++) {
-        cin >> x[i] >> y[i];
-    }
-
     if (n == 1) {
         cout << 0 << "\n";
         return;
     }
 
-    int min_x = *min_element(x.begin(), x.end());
-    int max_x = *max_element(x.begin(), x.end());
-    int min_y = *min_element(y.begin(), y.end());
-    int max_y = *max_element(y.begin(), y.end());
+    // int min_x = *min_element(x.begin(), x.end());
+    // int max_x = *max_element(x.begin(), x.end());
+    // int min_y = *min_element(y.begin(), y.end());
+    // int max_y = *max_element(y.begin(), y.end());
 
-    int area = (max_x - min_x) * (max_y - min_y);
-    cout << area << "\n";
+    // int area = (max_x - min_x) * (max_y - min_y);
+    // cout << area << "\n";
+
+    int x, y;
+    cin >> x >> y;
+    int min_x = x, max_x = x;
+    int min_y = y, max_y = y;
+
+    for (int i = 1; i < n; i++) {
+        cin >> x >> y;
+        min_x = min(min_x, x);
+        max_x = max(max_x, x);
+        min_y = min(min_y, y);
+        max_y = max(max_y, y);
+    }
+
+    cout << (max_x - min_x) * (max_y - min_y) << "\n";
 }
 
 int main() {
