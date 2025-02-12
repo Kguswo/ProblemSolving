@@ -10,7 +10,7 @@ public class Main {
     static BufferedWriter bw;
     static StringTokenizer st;
     static int N, K;
-    static int[][] dp;
+    static int[] dp;
     static final int MOD = (int)1e9 + 3;
     public static void main(String[] args) throws Exception {
         new Main().solution();
@@ -33,23 +33,21 @@ public class Main {
             return;
         }
 
-        dp = new int[N + 1][N/2 + 1];
+        dp = new int[K + 1];
 
-        for(int i=1; i<=N; i++){
-            dp[i][0] = 1;
-            dp[i][1] = i;
+        for(int i=0; i<=K; i++){
+            dp[i] = 1;
         }
 
-
-        for(int i=2; i<=N; i++){
-            for(int j=2; j<=N/2; j++){
-                dp[i][j] = (dp[i-2][j-1] + dp[i-1][j]) % MOD;
+        for(int len = 1; len <= N-2*K+1; len++) {
+            for(int j=1; j<=K; j++) {
+                dp[j] = (dp[j] + dp[j-1]) % MOD;
             }
         }
 
-        int selectFrom1 = dp[N-3][K-1] % MOD;
-        int selectFrom2 = dp[N-1][K] % MOD;
-        bw.write(String.valueOf((selectFrom1 + selectFrom2) % MOD));
+//        System.out.println(Arrays.toString(dp));
+
+        System.out.println((dp[K] - dp[K-2] + MOD)%MOD);
         bw.flush();
         bw.close();
         br.close();
