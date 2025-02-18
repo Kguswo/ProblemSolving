@@ -74,7 +74,7 @@ public class Main {
         int m = Math.min(a, z);
         long cnt=1;
         for(int i=1; i<=m; i++) {
-            if(cnt >= Long.MAX_VALUE/(total-m+i)) return 1000000001;
+//            if(cnt >= Long.MAX_VALUE/(total-m+i)) return 1000000001;
             cnt = cnt * (total-m+i)/i;
             if(cnt > 1000000000) return 1000000001;
         }
