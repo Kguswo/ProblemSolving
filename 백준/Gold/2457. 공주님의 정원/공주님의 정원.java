@@ -6,6 +6,43 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
+    static class FastReader {
+        private final DataInputStream din;
+        private final byte[] buffer;
+        private int bufferPointer, bytesRead;
+
+        public FastReader() {
+            din = new DataInputStream(System.in);
+            buffer = new byte[16384];
+            bufferPointer = bytesRead = 0;
+        }
+
+        private byte read() throws IOException {
+            if (bufferPointer == bytesRead)
+                fillBuffer();
+            return buffer[bufferPointer++];
+        }
+
+        private void fillBuffer() throws IOException {
+            bytesRead = din.read(buffer, bufferPointer = 0, buffer.length);
+            if (bytesRead == -1)
+                buffer[0] = -1;
+        }
+
+        public int nextInt() throws IOException {
+            int ret = 0;
+            byte c = read();
+            while (c <= ' ')
+                c = read();
+            boolean neg = (c == '-');
+            if (neg)
+                c = read();
+            do {
+                ret = ret * 10 + c - '0';
+            } while ((c = read()) >= '0' && c <= '9');
+            return neg ? -ret : ret;
+        }
+    }
     class Flower implements Comparable<Flower>{
         int start, end;
         public Flower(int start, int end){
@@ -19,9 +56,7 @@ public class Main {
             return this.start - o.start;
         }
     }
-    static BufferedReader br;
-    static BufferedWriter bw;
-    static StringTokenizer st;
+    static FastReader fr;
     static int N, START, END, res;
     static int[] monthPrefix = {0, 31, 28, 31, 30, 31, 30, 31, 31, 30, 31, 30}; // 1~11월
     static Flower[] flowers;
@@ -31,9 +66,7 @@ public class Main {
     }
 
     public void solution() throws Exception {
-        br = new BufferedReader(new InputStreamReader(System.in));
-        //br = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/BOJ_2457_공주님의정원/input.txt")));
-        bw = new BufferedWriter(new OutputStreamWriter(System.out));
+        fr = new FastReader();
 
         // m월 0일
         for(int i=1; i<monthPrefix.length; i++) {
@@ -43,15 +76,14 @@ public class Main {
         START = monthPrefix[2] + 1;
         END = monthPrefix[10] + 30;
 
-        N = Integer.parseInt(br.readLine());
+        N = fr.nextInt();
         flowers = new Flower[N];
         int m1, d1, m2, d2;
         for(int i=0; i<N; i++) {
-            st = new StringTokenizer(br.readLine());
-            m1 = Integer.parseInt(st.nextToken());
-            d1 = Integer.parseInt(st.nextToken());
-            m2 = Integer.parseInt(st.nextToken());
-            d2 = Integer.parseInt(st.nextToken());
+            m1 = fr.nextInt();
+            d1 = fr.nextInt();
+            m2 = fr.nextInt();
+            d2 = fr.nextInt();
             flowers[i] = new Flower(monthPrefix[m1-1] + d1, monthPrefix[m2-1] + d2);
         }
 
@@ -75,9 +107,6 @@ public class Main {
                 currEnd = nextEnd;
             }
         }
-        System.out.println(flag? res : 0);
-        bw.flush();
-        bw.close();
-        br.close();
+        System.out.print(flag? res : 0);
     }
 }
