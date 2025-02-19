@@ -30,18 +30,53 @@ public class Main {
     static int[][] board;
     static boolean[][] visited;
     static Cell[] cells;
+    static FastReader fr;
+    public class FastReader {
+        private final DataInputStream din;
+        private final byte[] buffer;
+        private int bufferPointer, bytesRead;
+
+        public FastReader() {
+            din = new DataInputStream(System.in);
+            buffer = new byte[16384];
+            bufferPointer = bytesRead = 0;
+        }
+
+        private byte read() throws IOException {
+            if (bufferPointer == bytesRead)
+                fillBuffer();
+            return buffer[bufferPointer++];
+        }
+
+        private void fillBuffer() throws IOException {
+            bytesRead = din.read(buffer, bufferPointer = 0, buffer.length);
+            if (bytesRead == -1)
+                buffer[0] = -1;
+        }
+
+        public int nextInt() throws IOException {
+            int ret = 0;
+            byte c = read();
+            while (c <= ' ')
+                c = read();
+            boolean neg = (c == '-');
+            if (neg)
+                c = read();
+            do {
+                ret = ret * 10 + c - '0';
+            } while ((c = read()) >= '0' && c <= '9');
+            return neg ? -ret : ret;
+        }
+    }
+
     public static void main(String[] args) throws Exception {
         new Main().solution();
     }
 
     public void solution() throws Exception {
-        br = new BufferedReader(new InputStreamReader(System.in));
-//        br = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/BOJ_14258_XOR그룹/input.txt")));
-        bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
+        fr = new FastReader();
+        N = fr.nextInt();
+        M = fr.nextInt();
         board = new int[N][M];
         visited = new boolean[N][M];
 
@@ -53,9 +88,8 @@ public class Main {
 
         cells = new Cell[N*M];
         for(int i=0; i<N; i++) {
-            st = new StringTokenizer(br.readLine());
             for(int j=0; j<M; j++) {
-                board[i][j] = Integer.parseInt(st.nextToken());
+                board[i][j] = fr.nextInt();
                 cells[i*M + j] = new Cell(i, j, board[i][j]);
             }
         }
@@ -93,9 +127,6 @@ public class Main {
             res = Math.max(sum, res);
         }
         System.out.println(res);
-        bw.flush();
-        bw.close();
-        br.close();
     }
 
     public int find(int x){
