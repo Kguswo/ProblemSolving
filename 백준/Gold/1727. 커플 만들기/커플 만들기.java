@@ -6,22 +6,53 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static BufferedReader br;
-    static BufferedWriter bw;
-    static StringTokenizer st;
+    public class FastReader {
+        private final DataInputStream din;
+        private final byte[] buffer;
+        private int bufferPointer, bytesRead;
+
+        public FastReader() {
+            din = new DataInputStream(System.in);
+            buffer = new byte[16384];
+            bufferPointer = bytesRead = 0;
+        }
+
+        private byte read() throws IOException {
+            if (bufferPointer == bytesRead)
+                fillBuffer();
+            return buffer[bufferPointer++];
+        }
+
+        private void fillBuffer() throws IOException {
+            bytesRead = din.read(buffer, bufferPointer = 0, buffer.length);
+            if (bytesRead == -1)
+                buffer[0] = -1;
+        }
+
+        public int nextInt() throws IOException {
+            int ret = 0;
+            byte c = read();
+            while (c <= ' ')
+                c = read();
+            boolean neg = (c == '-');
+            if (neg)
+                c = read();
+            do {
+                ret = ret * 10 + c - '0';
+            } while ((c = read()) >= '0' && c <= '9');
+            return neg ? -ret : ret;
+        }
+    }
+    static FastReader fr;
     static int N, M, A[], B[], dp[][];
     public static void main(String[] args) throws Exception {
         new Main().solution();
     }
 
     public void solution() throws Exception {
-        br = new BufferedReader(new InputStreamReader(System.in));
-//        br = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/BOJ_1727_커플만들기/input.txt")));
-        bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
+        fr = new FastReader();
+        N = fr.nextInt();
+        M = fr.nextInt();
 
         A = new int[N+1];
         B = new int[M+1];
@@ -38,13 +69,11 @@ public class Main {
             dp[0][j] = 0;
         }
 
-        st = new StringTokenizer(br.readLine());
         for(int i=1; i<=N; i++) {
-            A[i] = Integer.parseInt(st.nextToken());
+            A[i] = fr.nextInt();
         }
-        st = new StringTokenizer(br.readLine());
         for(int i=1; i<=M; i++) {
-            B[i] = Integer.parseInt(st.nextToken());
+            B[i] = fr.nextInt();
         }
 
         Arrays.sort(A, 1, N+1);
@@ -66,10 +95,9 @@ public class Main {
                                     dp[i-1][j-1] + Math.abs(A[i] - B[j]))); // 이번커플매칭
             }
         }
-
+//        for(int i=0; i<=N; i++) {
+//            System.out.println(Arrays.toString(dp[i]));
+//        }
         System.out.println(dp[N][M]);
-        bw.flush();
-        bw.close();
-        br.close();
     }
 }
