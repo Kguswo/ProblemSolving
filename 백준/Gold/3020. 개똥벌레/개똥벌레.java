@@ -6,9 +6,44 @@ import java.io.*;
 import java.util.*;
 
 public class Main {
-    static BufferedReader br;
-    static BufferedWriter bw;
-    static StringTokenizer st;
+    public class FastReader {
+        private final DataInputStream din;
+        private final byte[] buffer;
+        private int bufferPointer, bytesRead;
+
+        public FastReader() {
+            din = new DataInputStream(System.in);
+            buffer = new byte[16384];
+            bufferPointer = bytesRead = 0;
+        }
+
+        private byte read() throws IOException {
+            if (bufferPointer == bytesRead)
+                fillBuffer();
+            return buffer[bufferPointer++];
+        }
+
+        private void fillBuffer() throws IOException {
+            bytesRead = din.read(buffer, bufferPointer = 0, buffer.length);
+            if (bytesRead == -1)
+                buffer[0] = -1;
+        }
+
+        public int nextInt() throws IOException {
+            int ret = 0;
+            byte c = read();
+            while (c <= ' ')
+                c = read();
+            boolean neg = (c == '-');
+            if (neg)
+                c = read();
+            do {
+                ret = ret * 10 + c - '0';
+            } while ((c = read()) >= '0' && c <= '9');
+            return neg ? -ret : ret;
+        }
+    }
+    static FastReader fr;
     static StringBuilder sb = new StringBuilder();
     static int N, H, nums[], odd[], even[], count[], min = Integer.MAX_VALUE;
     static Map<Integer, List<Integer>> breakMap = new HashMap<>(); // key : 부수는횟수, value : 해당 구간들
@@ -17,27 +52,22 @@ public class Main {
     }
 
     public void solution() throws Exception {
-        br = new BufferedReader(new InputStreamReader(System.in));
-//        br = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/BOJ_3020_개똥벌레/input.txt")));
-        bw = new BufferedWriter(new OutputStreamWriter(System.out));
-
-        st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        H = Integer.parseInt(st.nextToken());
+        fr = new FastReader();
+        N = fr.nextInt();
+        H = fr.nextInt();
         nums = new int[N+1];
         odd = new int[H+1]; // 홀수번째(석순) 누적합
         even = new int[H+1]; // 짝수번째(종유석) 누적합
         count = new int[H+1]; // 구간별 부술 개수 누적합배열
 
         for(int i = 1; i <= N; i++) {
-            nums[i] = Integer.parseInt(br.readLine());
+            nums[i] = fr.nextInt();
         }
 
         for(int i=1; i<=N; i++){
             if(i%2 == 1) odd[nums[i]]++;
             else even[(H+1) - nums[i]]++;
         }
-
         // 홀수는 끝부터 누적합
         for(int i=H-1; i>=1; i--){
             odd[i] += odd[i+1];
@@ -56,11 +86,7 @@ public class Main {
             breakMap.get(count[i]).add(i);
             if(min > count[i]) min = count[i];
         }
-
         sb.append(min).append(" ").append(breakMap.get(min).size());
         System.out.println(sb);
-        bw.flush();
-        bw.close();
-        br.close();
     }
 }
