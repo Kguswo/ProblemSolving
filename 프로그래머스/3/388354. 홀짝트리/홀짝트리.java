@@ -64,7 +64,6 @@ class Solution {
     }
     
     private int[] bfs(int node){
-        System.out.println("시작 : " + node);
         int tmp_g1=0, tmp_g2=0; // 홀짝 and 역홀짝 개수세기
         
         Queue<Integer> queue = new LinkedList<>();
