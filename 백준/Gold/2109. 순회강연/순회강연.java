@@ -1,5 +1,6 @@
 /**
  * Author: nowalex322, Kim HyeonJae
+ * 20:25 ~ 21:05
  */
 
 import java.io.*;
