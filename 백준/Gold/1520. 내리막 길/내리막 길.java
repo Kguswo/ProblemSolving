@@ -18,9 +18,45 @@ public class Main {
             return this.h - o.h;
         }
     }
-    static BufferedReader br;
-    static BufferedWriter bw;
-    static StringTokenizer st;
+
+    public class FastReader {
+        private final DataInputStream din;
+        private final byte[] buffer;
+        private int bufferPointer, bytesRead;
+
+        public FastReader() {
+            din = new DataInputStream(System.in);
+            buffer = new byte[16384];
+            bufferPointer = bytesRead = 0;
+        }
+
+        private byte read() throws IOException {
+            if (bufferPointer == bytesRead)
+                fillBuffer();
+            return buffer[bufferPointer++];
+        }
+
+        private void fillBuffer() throws IOException {
+            bytesRead = din.read(buffer, bufferPointer = 0, buffer.length);
+            if (bytesRead == -1)
+                buffer[0] = -1;
+        }
+
+        public int nextInt() throws IOException {
+            int ret = 0;
+            byte c = read();
+            while (c <= ' ')
+                c = read();
+            boolean neg = (c == '-');
+            if (neg)
+                c = read();
+            do {
+                ret = ret * 10 + c - '0';
+            } while ((c = read()) >= '0' && c <= '9');
+            return neg ? -ret : ret;
+        }
+    }
+    static FastReader fr;
     static int N, M;
     static int[] dr = {-1, 0, 1, 0}, dc = {0, 1, 0, -1};
     public static void main(String[] args) throws Exception {
@@ -28,13 +64,10 @@ public class Main {
     }
 
     public void solution() throws Exception {
-        br = new BufferedReader(new InputStreamReader(System.in));
-//        br = new BufferedReader(new InputStreamReader(new FileInputStream("src/main/java/BOJ_1520_내리막길/input.txt")));
-        bw = new BufferedWriter(new OutputStreamWriter(System.out));
 
-        st = new StringTokenizer(br.readLine());
-        N = Integer.parseInt(st.nextToken());
-        M = Integer.parseInt(st.nextToken());
+        fr = new FastReader();
+        N = fr.nextInt();
+        M = fr.nextInt();
 
         int[][] board = new int[N][M];
         int[][] dp = new int[N][M];
@@ -43,9 +76,8 @@ public class Main {
         PriorityQueue<Node> nodes = new PriorityQueue<>();
 
         for (int i = 0; i < N; i++) {
-            st = new StringTokenizer(br.readLine());
             for (int j = 0; j < M; j++) {
-                int num = Integer.parseInt(st.nextToken());
+                int num = fr.nextInt();
                 board[i][j] = num;
                 nodes.add(new Node(i, j, num));
             }
@@ -66,8 +98,11 @@ public class Main {
             }
         }
 
+//        for(int i=0; i<N; i++){
+//            System.out.println(Arrays.toString(dp[i]));
+//        }
+
         System.out.println(dp[0][0]);
-        br.close();
     }
 
     private static boolean isValid(int r, int c) {
