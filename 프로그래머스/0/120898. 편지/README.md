@@ -1,10 +1,10 @@
 # [level 0] 편지 - 120898 
 
-[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120898?language=java) 
+[문제 링크](https://school.programmers.co.kr/learn/courses/30/lessons/120898?language=csharp) 
 
 ### 성능 요약
 
-메모리: 74.9 MB, 시간: 0.02 ms
+메모리: 31.4 MB, 시간: 0.14 ms
 
 ### 구분
 
@@ -16,7 +16,7 @@
 
 ### 제출 일자
 
-2026년 01월 30일 21:55:55
+2026년 01월 30일 21:57:38
 
 ### 문제 설명
 
