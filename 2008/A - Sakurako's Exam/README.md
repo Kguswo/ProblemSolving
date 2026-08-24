@@ -1,0 +1,22 @@
+<h2><a href="https://codeforces.com/contest/2008/problem/A" target="_blank" rel="noopener noreferrer">2008A — Sakurako's Exam</a></h2>
+
+| | |
+|---|---|
+| **Difficulty** | 800 |
+| **Language** | Java 21 |
+| **Verdict** | ✅ Accepted |
+| **Problem Link** | [Codeforces 2008A](https://codeforces.com/contest/2008/problem/A) |
+
+## Topics
+`brute force` `constructive algorithms` `greedy` `math`
+
+---
+
+## Problem Statement
+
+<div class="header"><div class="title">A. Sakurako's Exam</div><div class="time-limit"><div class="property-title">time limit per test</div>1 second</div><div class="memory-limit"><div class="property-title">memory limit per test</div>256 megabytes</div><div class="input-file input-standard"><div class="property-title">input</div>standard input</div><div class="output-file output-standard"><div class="property-title">output</div>standard output</div></div><div><p>Today, Sakurako has a math exam. The teacher gave the array, consisting of $$$a$$$ ones and $$$b$$$ twos.</p><p>In an array, Sakurako <span class="tex-font-style-bf">must</span> place either a '<span class="tex-font-style-tt">+</span>' or a '<span class="tex-font-style-tt">-</span>' in front of each element so that the sum of all elements in the array equals $$$0$$$.</p><p>Sakurako is not sure if it is possible to solve this problem, so determine whether there is a way to assign signs such that the sum of all elements in the array equals $$$0$$$.</p></div><div class="input-specification"><div class="section-title">Input</div><p>The first line contains a single integer $$$t$$$ ($$$1\le t\le 100$$$)  — the number of test cases.</p><p>The only line of each test case contains two integers $$$a$$$ and $$$b$$$ ($$$0\le a,b \lt 10$$$)  — the number of '1's and the number of '2's in the array.</p></div><div class="output-specification"><div class="section-title">Output</div><p>For each test case, output "<span class="tex-font-style-tt">Yes</span>" if you can make the sum of the entire array equal to $$$0$$$, and "<span class="tex-font-style-tt">No</span>" otherwise.</p><p>You can output each letter in any case (lowercase or uppercase). For example, the strings "<span class="tex-font-style-tt">yEs</span>", "<span class="tex-font-style-tt">yes</span>", "<span class="tex-font-style-tt">Yes</span>", and "<span class="tex-font-style-tt">YES</span>" will be accepted as a positive answer.</p></div><div class="sample-tests"><div class="section-title">Example</div><div class="sample-test"><div class="input"><div class="title">Input<div title="Copy" data-clipboard-target="#id008745169540212294" id="id004259282705749341" class="input-output-copier">Copy</div></div><pre id="id008745169540212294"><div class="test-example-line test-example-line-even test-example-line-0">5</div><div class="test-example-line test-example-line-odd test-example-line-1">0 1</div><div class="test-example-line test-example-line-even test-example-line-2">0 3</div><div class="test-example-line test-example-line-odd test-example-line-3">2 0</div><div class="test-example-line test-example-line-even test-example-line-4">2 3</div><div class="test-example-line test-example-line-odd test-example-line-5">3 1</div></pre></div><div class="output"><div class="title">Output<div title="Copy" data-clipboard-target="#id005335091223917846" id="id007471081869741409" class="input-output-copier">Copy</div></div><pre id="id005335091223917846">NO
+NO
+YES
+YES
+NO
+</pre></div></div></div><div class="note"><div class="section-title">Note</div><ol> <li> $$$a=0$$$, $$$b=1$$$: This means the array is $$$[2]$$$ — it is impossible to add the signs '<span class="tex-font-style-tt">+</span>' or '<span class="tex-font-style-tt">-</span>' to get $$$0$$$ as a result;</li><li> $$$a=0$$$, $$$b=3$$$: This means the array is $$$[2, 2, 2]$$$ — it is impossible to add the signs '<span class="tex-font-style-tt">+</span>' or '<span class="tex-font-style-tt">-</span>' to get $$$0$$$ as a result;</li><li> $$$a=2$$$, $$$b=0$$$: This means the array is $$$[1, 1]$$$ — it is possible to add the signs '<span class="tex-font-style-tt">+</span>' or '<span class="tex-font-style-tt">-</span>' to get $$$0$$$ as a result ($$$+1-1=0$$$);</li><li> $$$a=2$$$, $$$b=3$$$: This means the array is $$$[1, 1, 2, 2, 2]$$$ — it is possible to add the signs '<span class="tex-font-style-tt">+</span>' or '<span class="tex-font-style-tt">-</span>' to get $$$0$$$ as a result ($$$+1+1-2-2+2=0$$$);</li></ol></div>
