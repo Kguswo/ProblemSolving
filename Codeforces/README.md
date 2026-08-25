@@ -6,14 +6,14 @@
 
 | Total Problems | Topics |
 |---|---|
-| 23 | 16 |
+| 28 | 16 |
 
 ---
 
 ## 📂 Topic-Wise Problems
 
 - [binary search](#binary-search) (1)
-- [brute force](#brute-force) (8)
+- [brute force](#brute-force) (11)
 - [combinatorics](#combinatorics) (1)
 - [constructive algorithms](#constructive-algorithms) (7)
 - [data structures](#data-structures) (1)
@@ -22,12 +22,12 @@
 - [dsu](#dsu) (1)
 - [games](#games) (2)
 - [graphs](#graphs) (1)
-- [greedy](#greedy) (8)
-- [implementation](#implementation) (8)
-- [math](#math) (15)
-- [number theory](#number-theory) (3)
+- [greedy](#greedy) (9)
+- [implementation](#implementation) (10)
+- [math](#math) (16)
+- [number theory](#number-theory) (4)
 - [sortings](#sortings) (2)
-- [strings](#strings) (5)
+- [strings](#strings) (6)
 
 ---
 
@@ -41,6 +41,9 @@
 
 | # | Problem | Difficulty | Solution |
 |---|---------|------------|----------|
+| 4A | [Watermelon](https://codeforces.com/contest/4/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/4/A%20-%20Watermelon/solution.java) |
+| 122A | [Lucky Division](https://codeforces.com/contest/122/problem/A) | 1000 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/122/A%20-%20Lucky%20Division/solution.java) |
+| 231A | [Team](https://codeforces.com/contest/231/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/231/A%20-%20Team/solution.java) |
 | 2008A | [Sakurako's Exam](https://codeforces.com/contest/2008/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2008/A%20-%20Sakurako's%20Exam/solution.java) |
 | 2008B | [Square or Not](https://codeforces.com/contest/2008/problem/B) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2008/B%20-%20Square%20or%20Not/solution.java) |
 | 2008C | [Longest Good Array](https://codeforces.com/contest/2008/problem/C) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2008/C%20-%20Longest%20Good%20Array/solution.java) |
@@ -112,6 +115,7 @@
 
 | # | Problem | Difficulty | Solution |
 |---|---------|------------|----------|
+| 231A | [Team](https://codeforces.com/contest/231/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/231/A%20-%20Team/solution.java) |
 | 339A | [Helpful Maths](https://codeforces.com/contest/339/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/339/A%20-%20Helpful%20Maths/solution.java) |
 | 2008A | [Sakurako's Exam](https://codeforces.com/contest/2008/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2008/A%20-%20Sakurako's%20Exam/solution.java) |
 | 2029A | [Set](https://codeforces.com/contest/2029/problem/A) | 800 | [Python 3](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2029/A%20-%20Set/solution.py) |
@@ -125,7 +129,9 @@
 
 | # | Problem | Difficulty | Solution |
 |---|---------|------------|----------|
+| 118A | [String Task](https://codeforces.com/contest/118/problem/A) | 1000 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/118/A%20-%20String%20Task/solution.java) |
 | 339A | [Helpful Maths](https://codeforces.com/contest/339/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/339/A%20-%20Helpful%20Maths/solution.java) |
+| 791A | [Bear and Big Brother](https://codeforces.com/contest/791/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/791/A%20-%20Bear%20and%20Big%20Brother/solution.java) |
 | 1998A | [Find K Distinct Points with Fixed Center](https://codeforces.com/contest/1998/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/1998/A%20-%20Find%20K%20Distinct%20Points%20with%20Fixed%20Center/solution.java) |
 | 1999A | [A+B Again?](https://codeforces.com/contest/1999/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/1999/A%20-%20A%2BB%20Again%3F/solution.java) |
 | 2002A | [Distanced Coloring](https://codeforces.com/contest/2002/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2002/A%20-%20Distanced%20Coloring/solution.java) |
@@ -138,6 +144,7 @@
 
 | # | Problem | Difficulty | Solution |
 |---|---------|------------|----------|
+| 4A | [Watermelon](https://codeforces.com/contest/4/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/4/A%20-%20Watermelon/solution.java) |
 | 1998A | [Find K Distinct Points with Fixed Center](https://codeforces.com/contest/1998/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/1998/A%20-%20Find%20K%20Distinct%20Points%20with%20Fixed%20Center/solution.java) |
 | 1999A | [A+B Again?](https://codeforces.com/contest/1999/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/1999/A%20-%20A%2BB%20Again%3F/solution.java) |
 | 2002A | [Distanced Coloring](https://codeforces.com/contest/2002/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2002/A%20-%20Distanced%20Coloring/solution.java) |
@@ -158,6 +165,7 @@
 
 | # | Problem | Difficulty | Solution |
 |---|---------|------------|----------|
+| 122A | [Lucky Division](https://codeforces.com/contest/122/problem/A) | 1000 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/122/A%20-%20Lucky%20Division/solution.java) |
 | 2008F | [Sakurako's Box](https://codeforces.com/contest/2008/problem/F) | 1400 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2008/F%20-%20Sakurako's%20Box/solution.java) |
 | 2037C | [Superultra's Favorite Permutation](https://codeforces.com/contest/2037/problem/C) | 1000 | [C++23 (GCC 14-64, msys2)](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2037/C%20-%20Superultra's%20Favorite%20Permutation/solution.cpp) |
 | 2050F | [Maximum modulo equality](https://codeforces.com/contest/2050/problem/F) | 1700 | [C++17 (GCC 7-32)](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2050/F%20-%20Maximum%20modulo%20equality/solution.cpp) |
@@ -173,6 +181,7 @@
 
 | # | Problem | Difficulty | Solution |
 |---|---------|------------|----------|
+| 118A | [String Task](https://codeforces.com/contest/118/problem/A) | 1000 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/118/A%20-%20String%20Task/solution.java) |
 | 339A | [Helpful Maths](https://codeforces.com/contest/339/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/339/A%20-%20Helpful%20Maths/solution.java) |
 | 2008B | [Square or Not](https://codeforces.com/contest/2008/problem/B) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2008/B%20-%20Square%20or%20Not/solution.java) |
 | 2029B | [Replacement](https://codeforces.com/contest/2029/problem/B) | 1100 | [C++17 (GCC 7-32)](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2029/B%20-%20Replacement/solution.cpp) |
