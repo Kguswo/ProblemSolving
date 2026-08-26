@@ -6,7 +6,7 @@
 
 | Total Problems | Topics |
 |---|---|
-| 28 | 16 |
+| 29 | 16 |
 
 ---
 
@@ -22,12 +22,12 @@
 - [dsu](#dsu) (1)
 - [games](#games) (2)
 - [graphs](#graphs) (1)
-- [greedy](#greedy) (9)
+- [greedy](#greedy) (10)
 - [implementation](#implementation) (10)
 - [math](#math) (16)
 - [number theory](#number-theory) (4)
 - [sortings](#sortings) (2)
-- [strings](#strings) (6)
+- [strings](#strings) (7)
 
 ---
 
@@ -115,6 +115,7 @@
 
 | # | Problem | Difficulty | Solution |
 |---|---------|------------|----------|
+| 58A | [Chat room](https://codeforces.com/contest/58/problem/A) | 1000 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/58/A%20-%20Chat%20room/solution.java) |
 | 231A | [Team](https://codeforces.com/contest/231/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/231/A%20-%20Team/solution.java) |
 | 339A | [Helpful Maths](https://codeforces.com/contest/339/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/339/A%20-%20Helpful%20Maths/solution.java) |
 | 2008A | [Sakurako's Exam](https://codeforces.com/contest/2008/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2008/A%20-%20Sakurako's%20Exam/solution.java) |
@@ -181,6 +182,7 @@
 
 | # | Problem | Difficulty | Solution |
 |---|---------|------------|----------|
+| 58A | [Chat room](https://codeforces.com/contest/58/problem/A) | 1000 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/58/A%20-%20Chat%20room/solution.java) |
 | 118A | [String Task](https://codeforces.com/contest/118/problem/A) | 1000 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/118/A%20-%20String%20Task/solution.java) |
 | 339A | [Helpful Maths](https://codeforces.com/contest/339/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/339/A%20-%20Helpful%20Maths/solution.java) |
 | 2008B | [Square or Not](https://codeforces.com/contest/2008/problem/B) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2008/B%20-%20Square%20or%20Not/solution.java) |
