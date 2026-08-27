@@ -6,7 +6,7 @@
 
 | Total Problems | Topics |
 |---|---|
-| 29 | 16 |
+| 30 | 16 |
 
 ---
 
@@ -23,8 +23,8 @@
 - [games](#games) (2)
 - [graphs](#graphs) (1)
 - [greedy](#greedy) (10)
-- [implementation](#implementation) (10)
-- [math](#math) (16)
+- [implementation](#implementation) (11)
+- [math](#math) (17)
 - [number theory](#number-theory) (4)
 - [sortings](#sortings) (2)
 - [strings](#strings) (7)
@@ -130,6 +130,7 @@
 
 | # | Problem | Difficulty | Solution |
 |---|---------|------------|----------|
+| 69A | [Young Physicist](https://codeforces.com/contest/69/problem/A) | 1000 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/69/A%20-%20Young%20Physicist/solution.java) |
 | 118A | [String Task](https://codeforces.com/contest/118/problem/A) | 1000 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/118/A%20-%20String%20Task/solution.java) |
 | 339A | [Helpful Maths](https://codeforces.com/contest/339/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/339/A%20-%20Helpful%20Maths/solution.java) |
 | 791A | [Bear and Big Brother](https://codeforces.com/contest/791/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/791/A%20-%20Bear%20and%20Big%20Brother/solution.java) |
@@ -146,6 +147,7 @@
 | # | Problem | Difficulty | Solution |
 |---|---------|------------|----------|
 | 4A | [Watermelon](https://codeforces.com/contest/4/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/4/A%20-%20Watermelon/solution.java) |
+| 69A | [Young Physicist](https://codeforces.com/contest/69/problem/A) | 1000 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/69/A%20-%20Young%20Physicist/solution.java) |
 | 1998A | [Find K Distinct Points with Fixed Center](https://codeforces.com/contest/1998/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/1998/A%20-%20Find%20K%20Distinct%20Points%20with%20Fixed%20Center/solution.java) |
 | 1999A | [A+B Again?](https://codeforces.com/contest/1999/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/1999/A%20-%20A%2BB%20Again%3F/solution.java) |
 | 2002A | [Distanced Coloring](https://codeforces.com/contest/2002/problem/A) | 800 | [Java 21](https://github.com/Kguswo/ProblemSolving/blob/HEAD/2002/A%20-%20Distanced%20Coloring/solution.java) |
