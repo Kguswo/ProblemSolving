@@ -33,7 +33,16 @@ jobs:
           for d in */; do
             name="${d%/}"
             if [[ "$name" =~ ^[0-9]+$ ]]; then
-              git mv "$name" "Codeforces/$name"
+              if [ -d "Codeforces/$name" ]; then
+                # 이미 같은 콘테스트 번호 폴더가 있으면 내용물만 병합
+                for item in "$name"/*; do
+                  [ -e "$item" ] || continue
+                  git mv "$item" "Codeforces/$name/"
+                done
+                rmdir "$name" 2>/dev/null || true
+              else
+                git mv "$name" "Codeforces/$name"
+              fi
               moved=true
             fi
           done
