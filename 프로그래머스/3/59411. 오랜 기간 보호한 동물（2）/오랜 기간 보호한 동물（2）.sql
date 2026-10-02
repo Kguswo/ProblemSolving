@@ -1,5 +1,6 @@
-SELECT ai.ANIMAL_ID, ai.NAME
-    FROM ANIMAL_INS as ai
-        JOIN ANIMAL_OUTS as ao ON ai.ANIMAL_ID = ao.ANIMAL_ID
-            ORDER BY (ao.DATETIME - ai.DATETIME) DESC
-                LIMIT 2;
+SELECT ain.ANIMAL_ID, ain.NAME
+    FROM ANIMAL_INS AS ain
+        INNER JOIN ANIMAL_OUTS AS aout
+        ON ain.ANIMAL_ID = aout.ANIMAL_ID
+    ORDER BY aout.DATETIME - ain.DATETIME DESC
+    LIMIT 2;
