@@ -1,49 +1,39 @@
-//sol_1 bfs
+// sol_2 플로이드워셜
+
 import java.util.*;
 
 class Solution {
-    static int N;
     public int solution(int n, int[][] results) {
-        List<Integer>[] win = new ArrayList[n+1];
-        List<Integer>[] lose = new ArrayList[n+1];
-        
-        for (int i=0; i<=n; i++) {
-            win[i] = new ArrayList<>();
-            lose[i] = new ArrayList<>();
-        }
-        
+        int[][] board = new int[n+1][n+1]; // 이기면 1 , 지면 0
         for (int[] result : results) {
-            win[result[0]].add(result[1]);
-            lose[result[1]].add(result[0]);
+            board[result[0]][result[1]] = 1;
         }
-        N = n;
+        
+        for (int k=1; k<=n; k++) {
+            for (int i=1; i<=n; i++) {
+                for (int j=1; j<=n; j++) {
+                    if (board[i][k] == 1 && board[k][j] == 1) {
+                        board[i][j] = 1;
+                    }
+                }
+            }
+        }
+        
         int ans = 0;
-        for (int i=1; i<=n; i++) {
-            if (bfs(i, win) + bfs(i, lose) == n-1) ans++;
+        for (int num=1; num<=n; num++) {
+            int win = 0;
+            int lose = 0;
+            for (int i=1; i<=n; i++) {
+                if (board[num][i]==1) {
+                    win++;
+                }
+                if (board[i][num]==1) {
+                    lose++;
+                }
+            } 
+            if (win + lose == n-1) ans++;
         }
         
         return ans;
-    }
-    
-    private static int bfs(int start, List<Integer>[] graph) {
-        Queue<Integer> queue = new ArrayDeque<>();
-        boolean[] visited = new boolean[N+1];
-        int cnt = 0;
-        
-        queue.offer(start);
-        visited[start] = true;
-        
-        while(!queue.isEmpty()) {
-            int curr = queue.poll();
-            for (int next : graph[curr]) {
-                if(!visited[next]) {
-                    queue.offer(next);
-                    visited[next] = true;
-                    cnt++;
-                }
-            }    
-        }
-        
-        return cnt;
     }
 }
